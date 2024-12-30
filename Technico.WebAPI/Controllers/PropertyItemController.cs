@@ -30,6 +30,28 @@ namespace Technico.WebAPI.Controllers
             }));
         }
 
+
+        [HttpGet("{id:long}")]
+        public async Task<IActionResult> GetById(long id)
+        {
+            var propertyItem = await _service.GetByIdAsync(id);
+            if (propertyItem == null)
+            {
+                return NotFound(new { message = "Property not found by ID." });
+            }
+
+            return Ok(new
+            {
+                propertyItem.Id,
+                propertyItem.PropertyIdentificationNumber,
+                propertyItem.Address,
+                propertyItem.YearOfConstruction,
+                propertyItem.PropertyType,
+                propertyItem.OwnerVAT,
+                propertyItem.IsActive
+            });
+        }
+
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] PropertyItemDTO dto)
         {
@@ -46,7 +68,7 @@ namespace Technico.WebAPI.Controllers
         }
 
         [HttpDelete("permanent/{id}")]
-        public async Task<IActionResult> DeletePermanently(long id)
+        public async Task<IActionResult> DeletePermanently([FromRoute]long id)
         {
             var deletedItem = await _service.DeletePermanentlyAsync(id);
             if (deletedItem == null)
