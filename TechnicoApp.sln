@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicoApp", "TechnicoApp\TechnicoApp.csproj", "{5EBC5BE9-55FE-40E6-8EB7-03CD0C709167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Technico.WebAPI", "Technico.WebAPI\Technico.WebAPI.csproj", "{C9FA8881-39F5-4D49-B130-75B1EE8B851E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicoApi", "Technico.WebAPI\TechnicoApi.csproj", "{C9FA8881-39F5-4D49-B130-75B1EE8B851E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

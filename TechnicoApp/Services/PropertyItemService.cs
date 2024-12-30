@@ -1,5 +1,8 @@
 ﻿using TechnicoApp.Domain.Interfaces;
 using TechnicoApp.Domain.Models;
+using TechnicoApp.Dtos;
+using TechnicoApp.Mappers;
+using TechnicoApp.Models;
 using TechnicoApp.Repositories;
 
 namespace TechnicoApp.Services;
@@ -7,10 +10,12 @@ namespace TechnicoApp.Services;
 public class PropertyItemService: IPropertyItemService
 {
     private readonly IRepository<PropertyItem, long> _repository;
+    private readonly IMapper<Address, AddressDto> _addressMapper;
 
-    public PropertyItemService(IRepository<PropertyItem, long> repository)
+    public PropertyItemService(IRepository<PropertyItem, long> repository, IMapper<Address, AddressDto> addressMapper)
     {
         _repository = repository;
+        _addressMapper = addressMapper;
     }
 
 

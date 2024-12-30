@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechnicoApp.Dtos;
 using TechnicoApp.Mappers;
+using TechnicoApp.Models;
 using TechnicoApp.Repositories;
 
 namespace TechnicoApp.Services;
@@ -17,11 +18,14 @@ public class PropertyOwnerService : IPropertyOwnerService
 {
     private readonly IRepository<PropertyOwner, string> _repository;
     private readonly IMapper<PropertyOwner, PropertyOwnerDto> _mapper;
+    private readonly IMapper<Address, AddressDto> _addressMapper;
 
-    public PropertyOwnerService(IRepository<PropertyOwner, string> repository)
+
+    public PropertyOwnerService(IRepository<PropertyOwner, string> repository, IMapper<Address, AddressDto> addressMapper)
     {
         _repository = repository;
         _mapper = new PropertyOwnerMapper();
+        _addressMapper = addressMapper;
     }
 
     public async Task<ResponseApi<PropertyOwnerDto>> RegisterAsync(PropertyOwnerDto propertyOwnerDto)

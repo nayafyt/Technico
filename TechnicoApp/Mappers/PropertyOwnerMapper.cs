@@ -26,7 +26,12 @@ public class PropertyOwnerMapper : IMapper<PropertyOwner, PropertyOwnerDto>
             VatNumber = propertyOwner.VatNumber,
             Name = propertyOwner.Name,
             Surname = propertyOwner.Surname,
-            Address = propertyOwner.Address, // Assuming Address class has its own mapping logic
+            AddressDto = new AddressDto() {
+                City = propertyOwner.Address.City,
+                Street = propertyOwner.Address.Street,
+                PostalCode = propertyOwner.Address.PostalCode,
+                Country = propertyOwner.Address.Country
+            }, 
             PhoneNumber = propertyOwner.PhoneNumber,
             Email = propertyOwner.Email,
             Password = propertyOwner.Password, // Consider whether the password should be included here
@@ -50,7 +55,12 @@ public class PropertyOwnerMapper : IMapper<PropertyOwner, PropertyOwnerDto>
              VatNumber = propertyOwnerDto.VatNumber,
             Name = propertyOwnerDto.Name,
             Surname = propertyOwnerDto.Surname,
-            Address = propertyOwnerDto.Address, // Assuming Address class has its own mapping logic
+            Address = new Address() { 
+                Street = propertyOwnerDto.AddressDto.Street,
+                City = propertyOwnerDto.AddressDto.City,
+                PostalCode = propertyOwnerDto.AddressDto.PostalCode,
+                Country = propertyOwnerDto.AddressDto.Country
+            }, // Assuming Address class has its own mapping logic
             PhoneNumber = propertyOwnerDto.PhoneNumber,
             Email = propertyOwnerDto.Email,
             Password = propertyOwnerDto.Password, // Consider whether the password should be handled securely
